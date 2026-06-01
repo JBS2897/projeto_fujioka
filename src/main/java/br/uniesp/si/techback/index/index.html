@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IESPFLIX | Portal do Projeto Web</title>
+<style>
+body { background-color: #0b1329; color: #f8fafc; font-family: sans-serif; padding: 40px 20px; margin: 0; }
+header { text-align: center; margin-bottom: 40px; }
+        .badge { background-color: #1e293b; color: #38bdf8; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .badge-method { color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; display: inline-block; margin-right: 10px; }
+        .post { background-color: #10b981; }
+        .get { background-color: #3b82f6; }
+h1 { font-size: 32px; margin: 15px 0 5px 0; color: #fff; }
+        .subtitle { color: #94a3b8; font-size: 16px; margin-bottom: 30px; text-align: center; }
+
+/* MENU DE ABAS */
+        .menu-abas { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .aba { background-color: #1e293b; color: #94a3b8; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; transition: 0.2s; }
+        .aba:hover { background-color: #2d3748; color: #fff; }
+        .aba.ativa { background-color: #38bdf8; color: #0b1329; font-weight: bold; }
+
+/* CONTAINER PRINCIPAL */
+main { max-width: 700px; margin: 0 auto; }
+        .card { background-color: #1c2541; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); margin-bottom: 20px; }
+        .aba-conteudo { display: none; }
+        .aba-conteudo.ativa { display: block; }
+
+/* LISTAS E TEXTOS */
+h2 { color: #fff; font-size: 20px; margin-top: 0; border-bottom: 1px solid #3a506b; padding-bottom: 10px; }
+p { color: #cbd5e1; line-height: 1.6; font-size: 15px; }
+ul { padding-left: 20px; color: #cbd5e1; line-height: 1.8; }
+li { margin-bottom: 8px; }
+strong { color: #38bdf8; }
+        .endpoint-item { background-color: #0b1329; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #3a506b; }
+
+/* FORMULÁRIOS E INPUTS */
+form { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+        .row { display: flex; gap: 12px; }
+        .row input { flex: 1; }
+input { background-color: #0b1329; border: 1px solid #3a506b; padding: 12px; border-radius: 6px; color: #fff; font-size: 14px; width: 100%; box-sizing: border-box; }
+input:focus { border-color: #38bdf8; outline: none; }
+        .btn-enviar { background-color: #38bdf8; color: #0b1329; padding: 12px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; font-size: 15px; transition: 0.2s; margin-top: 5px; }
+        .btn-enviar:hover { background-color: #0ea5e9; }
+
+/* RETORNOS DA API */
+        .sucesso { margin-top: 15px; padding: 12px; background-color: #065f46; color: #34d399; border-radius: 6px; font-size: 14px; display: none; border-left: 5px solid #10b981; }
+        .erro { margin-top: 15px; padding: 12px; background-color: #991b1b; color: #fca5a5; border-radius: 6px; font-size: 14px; display: none; border-left: 5px solid #ef4444; }
+        .readme-box { background-color: #0b1329; color: #a7f3d0; font-family: monospace; padding: 15px; border-radius: 6px; margin-top: 20px; white-space: pre-wrap; font-size: 13px; border: 1px dashed #34d399; display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="badge">DESCRIÇÃO DO PROJETO PARA TURMA</span>
+        <h1>IESPFLIX | Portal do Projeto Web</h1>
+    </header>
+    <div class="subtitle">Conexão do Frontend React/HTML com o seu Backend Spring Boot</div>
+
+    <div class="menu-abas">
+        <button class="aba" onclick="mudarAba('visao')">Visão geral</button>
+        <button class="aba" onclick="mudarAba('sugestoes')">Sugestões</button>
+        <button class="aba ativa" onclick="mudarAba('endpoints')">Endpoints</button>
+        <button class="aba" onclick="mudarAba('equipe')">Equipe</button>
+    </div>
+
+    <main>
+        
+        <div id="visao" class="aba-conteudo">
+            <div class="card">
+<h2>Visão Geral</h2>
+<p>O projeto consiste no desenvolvimento completo de um ecossistema de gerenciamento cinematográfico (IESPFLIX) utilizando arquitetura cliente-servidor.</p>
+                <p><strong>Exigências Técnicas do Professor:</strong></p>
+                <ul>
+                    <li><strong>Persistência de Dados:</strong> Configuração do Spring Data JPA com banco mapeado adequadamente.</li>
+                    <li><strong>Camada DTO (Data Transfer Object):</strong> Proteção e isolamento das entidades de banco de dados durante a transferência.</li>
+                    <li><strong>Consumo de APIs Externas:</strong> Integração dinâmica com a <strong>BrasilAPI</strong> para captura automática de CEP.</li>
+                    <li><strong>Clean Code:</strong> Utilização do Lombok para reduzir código boilerplate (Getters, Setters, Mappers organizados).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="sugestoes" class="aba-conteudo">
+            <div class="card">
+                <h2>Sugestões & Boas Práticas</h2>
+<p>Dicas explícitas fornecidas para atingir os critérios máximos de avaliação:</p>
+                <ul>
+                    <li><strong>Tratamento de Status HTTP:</strong> Toda operação de inserção bem-sucedida deve retornar o código de status HTTP <strong>201 Created</strong>.</li>
+                    <li><strong>Regras de Usuário:</strong> O campo de e-mail deve possuir validação robusta (não nulo, único e formato de e-mail padrão).</li>
+                    <li><strong>Separação de Modelos:</strong> Evitar tabelas genéricas duplicadas. Cada recurso (/usuarios, /ingressos, /sessoes) deve manipular seu respectivo repositório físico.</li>
+                    <li><strong>Tratamento de Exceções:</strong> Retornos amigáveis em formato JSON para requisições inválidas feitas pelo cliente.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="endpoints" class="aba-conteudo ativa">
+            <div class="card">
+<h2>Endpoints da API</h2>
+<p>Selecione um dos caminhos obrigatórios exigidos no escopo do projeto para interagir com o seu IntelliJ local:</p>
+
+                <div class="endpoint-item">
+                    <span class="badge-method post">POST</span><strong>/usuarios</strong>
+                    <p style="font-size: 13px; color: #94a3b8; margin: 5px 0;">Cadastra um novo usuário e preenche o endereço automaticamente pelo CEP via BrasilAPI.</p>
+                    
+                    <form id="formUsuario">
+                        <input type="text" id="nome" placeholder="Nome Completo" required>
+                        <input type="email" id="email" placeholder="E-mail válido" required>
+                        <input type="password" id="senha" placeholder="Senha" required>
+                        <input type="text" id="cep" placeholder="CEP (Apenas números)" required maxlength="8">
+        <button type="submit" class="btn-enviar">Executar POST /usuarios</button>
+                    </form>
+
+                    <div id="msgSucesso" class="sucesso"></div>
+                    <div id="msgErro" class="erro"></div>
+                </div>
+
+                <div class="endpoint-item">
+                    <span class="badge-method get">GET</span><strong>/filmes/ordenado</strong>
+                    <p style="font-size: 13px; color: #94a3b8; margin: 5px 0;">Retorna a lista completa de filmes cadastrados em ordem alfabética no seu banco de dados.</p>
+                </div>
+
+                <div class="endpoint-item">
+                    <span class="badge-method post">POST</span><strong>/ingressos</strong>
+                    <p style="font-size: 13px; color: #94a3b8; margin: 5px 0;">Efetua a reserva e persistência de bilhetes vinculados à tabela independente de ingressos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="equipe" class="aba-conteudo">
+            <div class="card">
+<h2>Equipe e Documentação do Projeto</h2>
+<p>Preencha as informações do grupo para gerar a formatação automática estruturada do arquivo README exigido na entrega.</p>
+                
+                <form id="formEquipe">
+                    <input type="text" id="projNome" placeholder="Nome do Projeto" value="IESPFLIX Web + API">
+                    <input type="text" id="projGithub" placeholder="URL do Repositório (GitHub)">
+                    <input type="text" id="projApresentador" placeholder="Apresentador Principal do Grupo">
+                    
+                    <div class="row">
+                        <input type="text" id="integ1" placeholder="Integrante 1">
+                        <input type="text" id="resp1" placeholder="Responsabilidade (Ex: Backend Java / Controllers)">
+                    </div>
+                    <div class="row">
+                        <input type="text" id="integ2" placeholder="Integrante 2">
+                        <input type="text" id="resp2" placeholder="Responsabilidade (Ex: Frontend / HTML / CSS)">
+                    </div>
+                    <div class="row">
+                        <input type="text" id="integ3" placeholder="Integrante 3">
+                        <input type="text" id="resp3" placeholder="Responsabilidade (Ex: Banco de Dados / Tabelas)">
+                    </div>
+                    <div class="row">
+                        <input type="text" id="integ4" placeholder="Integrante 4">
+                        <input type="text" id="resp4" placeholder="Responsabilidade (Ex: Integração BrasilAPI)">
+                    </div>
+                    <div class="row">
+                        <input type="text" id="integ5" placeholder="Integrante 5">
+                        <input type="text" id="resp5" placeholder="Responsabilidade (Ex: Mappers / DTOs / Testes)">
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar" style="background-color: #1e293b; color: #38bdf8; border: 1px solid #3a506b;">Gerar Dados do README</button>
+                </form>
+
+                <div id="txtReadme" class="readme-box"></div>
+            </div>
+        </div>
+    </main>
+
+<script>
+function mudarAba(idAba) {
+    document.querySelectorAll('.aba-conteudo').forEach(el => el.classList.remove('ativa'));
+    document.querySelectorAll('.aba').forEach(el => el.classList.remove('ativa'));
+
+    document.getElementById(idAba).classList.add('ativa');
+    event.target.classList.add('ativa');
+}
+
+// INTEGRAÇÃO COM O BACKEND
+        document.getElementById('formUsuario').addEventListener('submit', async (e) => {
+        e.preventDefault();
+            const msgSucesso = document.getElementById('msgSucesso');
+            const msgErro = document.getElementById('msgErro');
+
+msgSucesso.style.display = 'none';
+msgErro.style.display = 'none';
+
+        const payload = {
+nome: document.getElementById('nome').value,
+email: document.getElementById('email').value,
+senha: document.getElementById('senha').value,
+cep: document.getElementById('cep').value
+            };
+
+                    try {
+                    const response = await fetch('http://localhost:8080/usuarios', {
+    method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+});
+
+        const dadosRetorno = await response.json();
+
+                if (response.ok) {
+msgSucesso.innerHTML = `<strong>Sucesso (HTTP ${response.status}):</strong> Cadastrado!<br><strong>Endereço retornado:</strong> ${dadosRetorno.logradouro || 'Verificado'}, ${dadosRetorno.city || 'Cidade'} - ${dadosRetorno.estado || 'UF'}`;
+msgSucesso.style.display = 'block';
+        document.getElementById('formUsuario').reset();
+                } else {
+msgErro.innerHTML = `<strong>Resposta da API (HTTP ${response.status}):</strong> ${dadosRetorno.message || 'Dados inválidos.'}`;
+msgErro.style.display = 'block';
+        }
+        } catch (error) {
+msgErro.innerHTML = `<strong>Falha de Conexão:</strong> Não foi possível conectar ao servidor local em http://localhost:8080`;
+msgErro.style.display = 'block';
+        }
+        });
+
+        // GERAÇÃO DO TEXTO DO README COM OS 5 INTEGRANTES
+        document.getElementById('formEquipe').addEventListener('submit', (e) => {
+        e.preventDefault();
+            const box = document.getElementById('txtReadme');
+            
+            const nome = document.getElementById('projNome').value;
+            const git = document.getElementById('projGithub').value || 'Não informado';
+        const apr = document.getElementById('projApresentador').value || 'Não informado';
+
+        const integrantes = [];
+        for(let i=1; i<=5; i++) {
+        const nomeInt = document.getElementById(`integ${i}`).value || `Integrante ${i}`;
+        const respInt = document.getElementById(`resp${i}`).value || 'N/A';
+        integrantes.push(`${i}. ${nomeInt} - Responsabilidade: ${respInt}`);
+        }
+
+box.innerText = `### ESTRUTURA DO README DE ENTREGA\n\n**Projeto:** ${nome}\n**Repositório:** ${git}\n**Apresentador Principal:** ${apr}\n\n**Integrantes do Grupo e Funções:**\n${integrantes.join('\n')}\n\n*Status da Conexão Local: Integrada com sucesso ao Spring Boot.*`;
+box.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
